@@ -1,0 +1,19 @@
+---
+- name: Interface Description on Leaf(s)
+  hosts: leafs
+  tasks:
+    - name: Interface Description for Uplinks
+      arista.eos.eos_interfaces:
+        config:
+          - description: "{{ item.desc }}"
+            name: "{{ item.name }}"
+            enabled: true
+            mode: layer2
+            # description: "Uplink to Spines"
+          # - name: Ethernet2
+          #   description: "Uplink to Spines"
+          #   enabled: true 
+          #   mode: layer2
+        state: merged
+        # state: deleted
+      loop: "{{ intf_desc }}"

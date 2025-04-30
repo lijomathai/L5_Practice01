@@ -1,0 +1,12 @@
+# this data model contains VLAN required for spine switches
+global_vlans:
+  - id: 101
+    name: VLAN101
+  - id: 102
+    name: VLAN102
+  - id: 103
+    name: VLAN103
+  - id: 104
+    name: VLAN104
+  - id: 105
+    name: VLAN105

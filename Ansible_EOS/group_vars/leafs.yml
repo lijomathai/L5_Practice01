@@ -1,0 +1,22 @@
+# this data model contains VLAN required for leaf switches
+global_vlans:
+  - id: 10
+    name: DMZ
+  - id: 20
+    name: Internal
+  - id: 30
+    name: Sales
+  - id: 40
+    name: App1
+  - id: 50
+    name: App2
+# this data model also contains uplink interface descriptions for leaf switches 
+intf_desc:
+  - desc: "Connected to Spine1"
+    name: Ethernet1
+  - desc: "Connected to Spine2"
+    name: Ethernet2
+  - desc: "Connected to Spine3"
+    name: Ethernet3
+  - desc: "Connected to Spine4"
+    name: Ethernet4
