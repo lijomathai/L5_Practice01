@@ -6,3 +6,101 @@ CVP_CONFIGLETS:
   MLAG_Left: "{{ lookup('file','{{path}}/configlets/MLAG_Left.cfg') }}"
   MLAG_Right: "{{ lookup('file','{{path}}/configlets/MLAG_Right.cfg') }}"
   Banner: "{{ lookup('file','{{path}}/configlets/banner.cfg') }}"
+
+CVP_CONTAINERS:
+  DC1:
+    parentContainerName: Tenant
+  DC1_Leafs:
+    parentContainerName: DC1
+  DC1_Spines:
+    parentContainerName: DC1
+  DC1_BorderLeafs:
+    parentContainerName: DC1
+  DC1_Hosts:
+    parentContainerName: DC1
+  DC2:
+    parentContainerName: Tenant
+  DC2_Leafs:
+    parentContainerName: DC2
+  DC2_Spines:
+    parentContainerName: DC2
+  DC2_BorderLeafs:
+    parentContainerName: DC2
+  DC2_Hosts:
+    parentContainerName: DC2
+
+CVP_DEVICES_MLAG:
+  - fqdn: 'leaf1'
+    parentContainerName: 'DC1_Leafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf1-base'
+      - 'MLAG_Left'
+  - fqdn: 'leaf2'
+    parentContainerName: 'DC1_Leafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf2-base'
+      - 'MLAG_Right'
+  - fqdn: 'spine1'
+    parentContainerName: 'DC1_Spines'
+    configlets:
+      - 'ATD-INFRA'
+      - 'spine1-base'
+  - fqdn: 'spine2'
+    parentContainerName: 'DC1_Spines'
+    configlets:
+      - 'ATD-INFRA'
+      - 'spine2-base'
+  - fqdn: 'borderleaf1'
+    parentContainerName: 'DC1_BorderLeafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'borderleaf1-base'
+  - fqdn: 'host1'
+    parentContainerName: 'DC1_Hosts'
+    configlets:
+      - 'ATD-INFRA'
+      - 'host1-base'
+  - fqdn: 'host2'
+    parentContainerName: 'DC1_Hosts'
+    configlets:
+      - 'ATD-INFRA'
+      - 'host2-base'
+  - fqdn: 'spine3'
+    parentContainerName: 'DC2_Spines'
+    configlets:
+      - 'ATD-INFRA'
+      - 'spine2-base'
+  - fqdn: 'spine4'
+    parentContainerName: 'DC2_Spines'
+    configlets:
+      - 'ATD-INFRA'
+      - 'spine4-base'
+  - fqdn: 'leaf3'
+    parentContainerName: 'DC2_Leafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf3-base'
+      - 'MLAG_Left'
+  - fqdn: 'leaf4'
+    parentContainerName: 'DC2_Leafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf4-base'
+      - 'MLAG_Right'
+  - fqdn: 'borderleaf2'
+    parentContainerName: 'DC2_BorderLeafs'
+    configlets:
+      - 'ATD-INFRA'
+      - 'borderleaf2-base'
+  - fqdn: 'host3'
+    parentContainerName: 'DC2_Hosts'
+    configlets:
+      - 'ATD-INFRA'
+      - 'host3-base'
+  - fqdn: 'host4'
+    parentContainerName: 'DC2_Hosts'
+    configlets:
+      - 'ATD-INFRA'
+      - 'host4-base'
