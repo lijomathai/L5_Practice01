@@ -1,0 +1,34 @@
+---
+- name: Add static route on host PC-1
+  hosts: host1
+
+  tasks:
+  - name:
+    arista.eos.eos_static_routes:
+      config:
+        - vrf: default
+          address_families:
+            - afi: ipv4
+              routes:
+                - dest: 10.10.20.0/24
+                  next_hops:
+                    - forward_router_address: 10.10.10.1
+                    # interface: Ethernet1
+      state: merged
+
+- name: Add static route on host PC-2
+  hosts: host2
+  
+  tasks:
+  - name:
+    arista.eos.eos_static_routes:
+      config:
+        - vrf: default
+          address_families:
+            - afi: ipv4
+              routes:
+                - dest: 10.10.10.0/24
+                  next_hops:
+                    - forward_router_address: 10.10.20.1
+                    # interface: Ethernet1
+      state: merged

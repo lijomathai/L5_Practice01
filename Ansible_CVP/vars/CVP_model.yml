@@ -71,7 +71,7 @@ CVP_DEVICES_MLAG:
     parentContainerName: 'DC2_Spines'
     configlets:
       - 'ATD-INFRA'
-      - 'spine2-base'
+      - 'spine3-base'
   - fqdn: 'spine4'
     parentContainerName: 'DC2_Spines'
     configlets:

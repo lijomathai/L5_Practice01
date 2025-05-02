@@ -1,0 +1,14 @@
+---
+- name: Add Interface to Portchannel1
+  hosts: host_pc
+  tasks:
+  - name: Create Port-Channel1 on host1
+    arista.eos.eos_lag_interfaces:
+      config:
+        - name: "Port-Channel1"
+          members:
+            - member: "Ethernet1"
+              mode: on
+            - member: "Ethernet2"
+              mode: on
+      state: merged

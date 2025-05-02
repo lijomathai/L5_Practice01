@@ -3,7 +3,7 @@
   hosts: cvp1
 
   vars_files:
-    - ../vars/CVP_model.yml
+    - ../vars/CVP_model_old.yml
 
   tasks:
     - name: Apply configlets to devices

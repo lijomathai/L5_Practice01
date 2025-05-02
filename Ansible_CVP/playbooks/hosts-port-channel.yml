@@ -1,0 +1,19 @@
+---
+- name: Port-Channel config on Host1
+  hosts: host1
+  tasks:
+    - name: Create Port-Channel1 on host1
+      arista.eos.eos_l3_interfaces:
+        config:
+        - name: "Portchannel1"
+          ipv4:
+            - address: 10.10.10.11/24
+- name: Port-Channel config on Host2
+  hosts: host2
+  tasks:
+    - name: Create Port-Channel1 on host2
+      arista.eos.eos_l3_interfaces:
+        config:
+        - name: "Portchannel1"
+          ipv4:
+            - address: 10.10.20.11/24
