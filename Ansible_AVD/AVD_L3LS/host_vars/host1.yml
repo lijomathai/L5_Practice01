@@ -1,0 +1,6 @@
+---
+interface_desc:
+  - desc: "Connected to Leaf1_e7"
+    name: Ethernet1
+  - desc: "Connected to Leaf2_e7"
+    name: Ethernet2

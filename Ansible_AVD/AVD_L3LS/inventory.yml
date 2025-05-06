@@ -47,6 +47,12 @@ all:
             leaf2:
             leaf3:
             leaf4:
+        HOSTS:
+          hosts:
+            host1:
+            host2:
+            host3:
+            host4:
     EVPN_SERVICES:
       children:
         LEAFS:
