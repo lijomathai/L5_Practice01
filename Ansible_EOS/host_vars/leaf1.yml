@@ -1,4 +1,10 @@
 ---
-water: wet
-sky: blue
-fire: hot
+intf_desc:
+  - desc: "Connected to Spine1_e1"
+    name: Ethernet1
+  - desc: "Connected to Spine2_e1"
+    name: Ethernet2
+  - desc: "Connected to Spine3_e1"
+    name: Ethernet3
+  - desc: "Connected to Spine4_e1"
+    name: Ethernet4

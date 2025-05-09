@@ -1,0 +1,13 @@
+---
+interface_desc:
+  - desc: "Connected to Leaf3_e7"
+    name: Ethernet1
+  - desc: "Connected to Leaf4_e7"
+    name: Ethernet2
+port_channel:
+  - desc: PortChannel host3
+    po_name: Port-Channel1
+  - member1: Ethernet1
+  - member2: Ethernet2
+  - address: 10.1.10.11/24
+  - forward_address_router: 10.1.20.1

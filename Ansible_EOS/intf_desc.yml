@@ -1,6 +1,6 @@
 ---
 - name: Interface Description on Leaf(s)
-  hosts: leafs
+  hosts: leaf1
   tasks:
     - name: Interface Description for Uplinks
       arista.eos.eos_interfaces:

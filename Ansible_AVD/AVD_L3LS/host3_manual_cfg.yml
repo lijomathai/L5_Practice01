@@ -1,6 +1,6 @@
 ---
-- name: Host1 configurations
-  hosts: host1
+- name: Host3 configurations
+  hosts: host3
   tasks:
     - name: Interface Description for Uplinks
       arista.eos.eos_interfaces:
@@ -17,11 +17,11 @@
     - name: Create Port-Channel1
       arista.eos.eos_lag_interfaces:
         config:
-          - name: Port-Channel1
+          - name: "{{ item.po_name }}"
             members:
-              - member: Ethernet1
+              - member: "{{ item.member1 }}"
                 mode: "on"
-              - member: Ethernet2
+              - member: "{{ item.member1 }}"
                 mode: "on"
         state: merged
     - name: Interface VLAN for host1
@@ -29,7 +29,7 @@
         config:
           - name: Port-Channel1
             ipv4:
-              - address: 10.1.10.11/24
+              - address: "{{ item.address }}"
         state: merged
     - name: Add static route configuration
       arista.eos.eos_static_routes:
@@ -40,5 +40,5 @@
                 routes:
                   - dest: 0.0.0.0/0
                     next_hops:
-                      - forward_router_address: 10.1.10.1
+                      - forward_router_address: "{{ item.forward_address_router }}"
         state: merged
