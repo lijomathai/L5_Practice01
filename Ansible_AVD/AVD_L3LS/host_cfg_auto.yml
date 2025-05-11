@@ -1,0 +1,51 @@
+---
+- name: Host1 configurations
+  hosts: host1
+  tasks:
+    - name: Interface Description for Uplinks
+      arista.eos.eos_interfaces:
+        config:
+          - description: "{{ item.desc }}"
+            name: "{{ item.name }}"
+            enabled: true
+            mode: layer2
+        state: merged
+      loop: "{{ interface_desc }}"
+    - name: Enable IP routing
+      arista.eos.eos_config:
+        lines: ip routing
+    - name: Create Port-Channel1
+      arista.eos.eos_lag_interfaces:
+        config:
+          - name: "{{ item.Po_name }}"
+            members:
+              - member: "{{ item.Po_member }}"
+                mode: "active"
+              # - member: "{{ item.Po_member2 }}"
+              #   mode: "active"
+        state: merged
+        loop: "{{ Po_member }}"
+    # # - name: Interface VLAN for host1
+    # #   arista.eos.eos_l3_interfaces:
+    # #     config:
+    # #       - name: "{{ item.Po_name }}"
+    # #         ipv4:
+    # #           - address: "{{ item.IPv4 }}"
+    # #     state: merged
+    # # - name: Enable L3 Portchannel for host1
+    # #   arista.eos.eos_interfaces:
+    # #     config:
+    # #       - name: "{{ item.Po_name }}"
+    # #         mode: layer3
+    # #     state: merged
+    # # - name: Add static route configuration
+    # #   arista.eos.eos_static_routes:
+    # #     config:
+    # #       - vrf: default
+    # #         address_families:
+    # #           - afi: ipv4
+    # #             routes:
+    # #               - dest: 0.0.0.0/0
+    # #                 next_hops:
+    # #                   - forward_router_address: "{{ item.NH }}"
+    # #     state: merged

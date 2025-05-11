@@ -4,3 +4,14 @@ interface_desc:
     name: Ethernet1
   - desc: "Connected to Leaf2_e7"
     name: Ethernet2
+PortChannels:
+  - Po_desc: "PortChannel1"
+  - Po_name: PortChannel1
+  # - Po_mem: "PortChannel members"
+    Po_member: [ Ethernet1, Ethernet2 ]
+  # - Po_mem: "PortChannel members"
+  #   Po_member: Ethernet2
+Interface_Po:
+  - IPv4: 10.1.10.11/24
+  - NH: 10.1.10.1
+
